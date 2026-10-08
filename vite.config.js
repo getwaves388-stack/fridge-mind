@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
+import { laravel } from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
@@ -11,11 +11,6 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    // 本番環境（Railway）でのCSS・JSの配信ルートのバグを強制解決する設定
-        server: {
-            hmr: {
-                host: 'fridge-mind-production.up.railway.app',
-                protocol: 'wss'
-            }
-        }
+    // サーバー上での配信エラーを防止する設定
+    base: './',
 });

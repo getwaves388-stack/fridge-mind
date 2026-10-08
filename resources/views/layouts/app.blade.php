@@ -19,6 +19,9 @@
     {{-- Custom CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+    <!-- Viteが本番用に書き出したBootstrapのCSSをダイレクトに強制適用 -->
+    <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
