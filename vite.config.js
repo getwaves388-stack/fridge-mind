@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { laravel } from 'laravel-vite-plugin';
+import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
@@ -11,6 +11,4 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    // サーバー上での配信エラーを防止する設定
-    base: './',
 });
