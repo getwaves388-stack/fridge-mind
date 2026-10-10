@@ -76,3 +76,15 @@ Route::group(['middleware' => 'auth'], function(){
 
 });
 
+// データ反映後に削除する一時的なルート
+Route::get('/run-seeder-securely', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
+            '--seed' => true,
+            '--force' => true,
+        ]);
+        return 'Database successfully refreshed and seeded!';
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
