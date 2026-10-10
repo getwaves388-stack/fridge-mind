@@ -13,8 +13,7 @@ class CalorieSeeder extends Seeder
      */
     public function run(): void
     {
-        // 定番の食材データを配列で用意（重複を防ぐため、存在しない場合のみ作成）
-        // 日本の家庭料理で「最もよく使われる食材・調味料」の上位100品目
+        // 日本の家庭料理で「最もよく使われる食材・調味料」の上位100品目を配列で用意
         $data = [
             // --- 肉類・加工肉（1〜18） ---
             ['key_name' => 'ぶたにく', 'calories' => 250],
@@ -190,6 +189,7 @@ class CalorieSeeder extends Seeder
 
             ['key_name' => 'よーぐると', 'calories' => 65],
             ['key_name' => 'ヨーグルト', 'calories' => 65],
+            ['key_name' => 'yogurt', 'calories' => 65],
 
             // --- 主食・粉類（83〜90） ---
             ['key_name' => 'ごはん', 'calories' => 250],
@@ -205,12 +205,15 @@ class CalorieSeeder extends Seeder
             ['key_name' => 'うどん', 'calories' => 240],
 
             ['key_name' => 'パスタ', 'calories' => 350],
+            ['key_name' => 'pasta', 'calories' => 350],
             ['key_name' => 'スパゲッティ', 'calories' => 350],
+            ['key_name' => 'spaghetti', 'calories' => 350],
 
             ['key_name' => 'そうめん', 'calories' => 300],
 
             ['key_name' => '小麦粉', 'calories' => 100],
             ['key_name' => 'こむぎこ', 'calories' => 100],
+            ['key_name' => 'flour', 'calories' => 100],
 
             ['key_name' => '片栗粉', 'calories' => 50],
 
@@ -234,9 +237,9 @@ class CalorieSeeder extends Seeder
 
             ['key_name' => 'みそ', 'calories' => 30],
             ['key_name' => '味噌', 'calories' => 30],
-            ['key_name' => 'miso', 'calories' => 30],
 
             ['key_name' => 'カレールー', 'calories' => 100],
+            ['key_name' => 'シチュールー', 'calories' => 100],
 
             ['key_name' => 'しょうゆ', 'calories' => 15],
             ['key_name' => '醤油', 'calories' => 15],
@@ -244,8 +247,8 @@ class CalorieSeeder extends Seeder
             ['key_name' => 'めんつゆ', 'calories' => 40],
 
             ['key_name' => '砂糖', 'calories' => 35],
-
             ['key_name' => 'さとう', 'calories' => 35],
+            ['key_name' => 'sugar', 'calories' => 35],
         ];
 
 
