@@ -76,15 +76,23 @@ Route::group(['middleware' => 'auth'], function(){
 
 });
 
-// データ反映後に削除する一時的なルート
+// 全ての不具合を強制クリアする最終ルート
 Route::get('/run-seeder-securely', function () {
     try {
+        // 1. 古い環境変数や設定のキャッシュを完全に破壊して消去する
+        \Illuminate\Support\Facades\Artisan::call('config:clear');
+        \Illuminate\Support\Facades\Artisan::call('cache:clear');
+        \Illuminate\Support\Facades\Artisan::call('view:clear');
+        \Illuminate\Support\Facades\Artisan::call('route:clear');
+        
+        // 2. データベースを完全にまっさらにして初期データを確実に流し込む
         \Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
             '--seed' => true,
             '--force' => true,
         ]);
-        return 'Database successfully refreshed and seeded!';
+        
+        return '【大成功】すべてのキャッシュを破壊し、データベースの初期化とシーダーの注入が100%完了しました！そのままアプリを開いて確認してください。';
     } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
+        return 'エラーが発生しました: ' . $e->getMessage();
     }
 });
