@@ -115,7 +115,7 @@ class RecipeController extends Controller
         $image_name = time() . "." . $image->extension();
 
         // Save the image to storage/app/public/images/
-        $image->storeAs(self::LOCAL_STORAGE_FOLDER, $image_name);
+        $image->storeAs(self::LOCAL_STORAGE_FOLDER, $image_name,'public');
 
         return $image_name;
     }
