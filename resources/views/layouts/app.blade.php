@@ -32,6 +32,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <i class="fa-solid fa-angles-right"></i>{{ config('app.name') }}
                 </a>
+                <div>{{ __('Hello,') }} {{ Auth::user()->name }}</div>&emsp;
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -72,7 +73,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('Hello,') }} {{ Auth::user()->name }}
+                                    {{ __('Menu') }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

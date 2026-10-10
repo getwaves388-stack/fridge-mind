@@ -12,16 +12,16 @@
                 <div class="card-body bg-secondary">
                     <form action="{{ route('ingredient.store') }}" method="post">
                         @csrf
-                        <div class="row gx-2 mb-3">
-                            <div class="col-5">
-                                <input type="text" name="name" id="name" class="form-control" value="{{ old('name')}}" placeholder="{{ __('Add ingredient (Required)') }}" autofocus>
+                        <div class="row gx-1 mb-3">
+                            <div class="col-4">
+                                <input type="text" name="name" id="name" class="form-control" value="{{ old('name')}}" placeholder="{{ __('Add ingredient') }}" autofocus>
                                 @error('name')
                                     <div class="text-danger small">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 {{-- Dynamically switching types on focus in JavaScript --}}
-                                <input type="text" name="expiry_date" id="expiry_date" class="form-control" value="{{ old('expiry_date')}}" placeholder="{{ __('Expiry date') }}" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'">
+                                <input type="text" name="expiry_date" id="expiry_date" class="form-control" value="{{ old('expiry_date')}}" placeholder="{{ __('Use by') }}" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'">
                                 @error('expiry_date')
                                     <div class="text-danger small">{{ $message }}</div>
                                 @enderror
@@ -37,7 +37,7 @@
                             </div>
                             <div class="col-2">
                                 <button type="submit" class="btn btn-primary w-100">
-                                    <i class="fa-solid fa-plus"></i> {{ __('Add') }}
+                                    {{ __('Add') }}
                                 </button>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                 <thead class="table-secondary">
                                     <tr>
                                         <th class="col-5">{{ __('Ingredient') }}</th>
-                                        <th class="col-3">{{ __('Expiry date') }}</th>
+                                        <th class="col-3">{{ __('Use by') }}</th>
                                         <th class="col-2">{{ __('Count') }}</th>
                                         <th class="col-2">{{ __('Actions') }}</th>
                                     </tr>

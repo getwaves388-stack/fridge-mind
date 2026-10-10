@@ -4,7 +4,7 @@
 
 @section('content')
 
-<a href="{{ route('recipe.index') }}" id="back" class="btn btn-outline-secondary rounded-pill shadow-sm" title="back">
+<a href="{{ route('recipe.index') }}" id="back" class="btn btn-outline-secondary rounded-pill shadow-sm mb-3" title="back">
     <i class="fa-solid fa-chevron-left"></i> {{ __('Back') }}
 </a>
 

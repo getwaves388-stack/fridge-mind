@@ -4,7 +4,7 @@
 
 @section('content')
 
-<a href="{{ route('recipe.index') }}" id="back" class="btn btn-outline-secondary rounded-pill shadow-sm" title="back">
+<a href="{{ route('recipe.index') }}" id="back" class="btn btn-outline-secondary rounded-pill shadow-sm mb-3" title="back">
     <i class="fa-solid fa-chevron-left"></i> {{ __('Back') }}
 </a>
 
@@ -30,9 +30,9 @@
                     </div>
 
                     <div class="row mt-4">
-                        <div class="col-4">
+                        <div class="col-5">
                             <h5 class="mb-3 fw-bold"><i class="fa-solid fa-list"></i> {{ __('Ingredients') }}</h5>
-                            <p class="mb-1"><i class="fa-solid fa-fire text-secondary"></i> {{ __('Total calories :') }} {{ $recipe->calories }} kcal</p>
+                            <p class="mb-1"><i class="fa-solid fa-fire text-secondary"></i> {{ __('Total :') }} {{ $recipe->calories }} kcal</p>
                             <ul>
                                 @php
                                     // Split ingredients by commas.
@@ -65,7 +65,7 @@
                             </ul>
                         </div>
 
-                        <div class="col-8">
+                        <div class="col-7">
                             <h5 class="mb-3 fw-bold"><i class="fa-solid fa-bookmark"></i> {{ __('Cooking Note') }}</h5>
                             @if($recipe->description)
                                 <p class="mb-0" style="white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word;">{{ $recipe->description }}</p>

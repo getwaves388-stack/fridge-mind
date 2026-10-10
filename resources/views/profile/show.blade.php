@@ -4,7 +4,7 @@
 
 @section('content')
 
-<a href="{{ route('index') }}" id="back" class="btn btn-outline-secondary rounded-pill shadow-sm" title="back">
+<a href="{{ route('index') }}" id="back" class="btn btn-outline-secondary rounded-pill shadow-sm mb-3" title="back">
     <i class="fa-solid fa-chevron-left"></i> {{ __('Back') }}
 </a>
 
@@ -22,7 +22,7 @@
             <h2 class="fw-bold mt-5">
                 <span><i class="fa-solid fa-fire text-secondary text-danger"></i> {{ __('Total calorie based on cooking record') }}</span>
             </h2>
-            <div class="row gap-4 my-4">
+            <div class="row gap-4 my-4 p-1">
                 <div class="col bg-white p-3 rounded border border-2 border-primary shadow">
                     <p class="fs-5 fw-bold">{{ __('Today') }}</p>
                     <p class="fs-3 text-dark mt-1">{{ $todayCalories }} <span class="text-muted">kcal</span></p>

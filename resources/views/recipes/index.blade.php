@@ -30,11 +30,7 @@
                             <div class="card-body">
                                 
                                 <div class="row mb-2">
-                                    <a href="{{ route('recipe.show',$recipe->id)}}" class="col-8 m-0 h3 text-decoration-none text-dark"><i class="fa-solid fa-angles-right"></i> {{ $recipe->title }}</a>
-                                    
-                                    <div class="col-4 ms-auto mb-auto">
-                                        {{ __('Record Date:') }} {{ \Carbon\Carbon::parse($recipe->created_at)->format('Y/m/d') }}
-                                    </div>
+                                    <a href="{{ route('recipe.show',$recipe->id)}}" class="m-0 h3 text-decoration-none text-dark"><i class="fa-solid fa-angles-right"></i> {{ $recipe->title }}</a>
                                 </div>
 
                                 <p><i class="fa-solid fa-fire text-secondary"></i> {{ $recipe->calories }} kcal</p>
@@ -46,10 +42,13 @@
                                         $ingredients = array_filter(array_map('trim', $ingredients));
                                     @endphp
                                     @foreach($ingredients as $ingredient)
-                                        <span class="px-2 py-1 d-inline-block my-1 border rounded">{{ $ingredient }}</span>
+                                        <span class="px-2 py-1 d-inline-block my-2 border rounded">{{ $ingredient }}</span>
                                     @endforeach
                                 </div>
                                 
+                                <div class="text-end">
+                                    {{ __('Record Date:') }} {{ \Carbon\Carbon::parse($recipe->created_at)->format('Y/m/d') }}
+                                </div>
                             </div>
                         </div>
                     </div>
