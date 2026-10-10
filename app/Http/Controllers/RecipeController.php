@@ -7,7 +7,7 @@ use App\Models\Recipe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User; 
-use App\models\Calorie;
+use App\Models\Calorie;
 
 class RecipeController extends Controller
 {
