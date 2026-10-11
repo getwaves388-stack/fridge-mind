@@ -10,47 +10,48 @@
                 <div class="card-header h3 py-3 text-center bg-dark text-info"><i class="fa-solid fa-snowflake"></i> {{ __('Your Fridge Food') }} <i class="fa-solid fa-snowflake"></i></div>
 
                 <div class="card-body bg-secondary">
-                    <form action="{{ route('ingredient.store') }}" method="post">
-                        @csrf
-                        <div class="row gx-1 mb-3">
-                            <div class="col-4">
-                                <input type="text" name="name" id="name" class="form-control" value="{{ old('name')}}" placeholder="{{ __('Add ingredient') }}" autofocus>
-                                @error('name')
+                    <div class="card-body bg-white mb-3 rounded">
+                        <form action="{{ route('ingredient.store') }}" method="POST">
+                            @csrf
+                            <div class="row gx-1">
+                                <div class="col-5">
+                                    <label class="form-label">{{ __('Ingredient') }}</label>
+                                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name')}}" placeholder="{{ __('Add ingredient') }}" autofocus>
+                                    @error('name')
                                     <div class="text-danger small">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="col-4">
-                                {{-- Dynamically switching types on focus in JavaScript --}}
-                                <input type="text" name="expiry_date" id="expiry_date" class="form-control" value="{{ old('expiry_date')}}" placeholder="{{ __('Use by') }}" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'">
-                                @error('expiry_date')
-                                    <div class="text-danger small">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="col-2">
-                                <div class="d-flex align-items-center">
-                                <label for="quantity" class="me-1 text-white"><i class="fa-solid fa-xmark"></i></label>
-                                <input type="number" name="quantity" id="quantity" value="{{ old('quantity',1) }}" min="1" class="form-control">
+                                    @enderror
                                 </div>
-                                @error('quantity')
+                                <div class="col-4">
+                                    <label class="form-label">{{ __('Use by') }}</label>
+                                    <input type="date" name="expiry_date" id="expiry_date" class="form-control" value="{{ old('expiry_date')}}">
+                                    @error('expiry_date')
                                     <div class="text-danger small">{{ $message }}</div>
-                                @enderror
+                                    @enderror
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label">{{ __('Count') }}</label>
+                                    <input type="number" name="quantity" id="quantity" value="{{ old('quantity',1)}}" min="1" class="form-control">
+                                    @error('quantity')
+                                    <div class="text-danger small">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="col-2">
-                                <button type="submit" class="btn btn-primary w-100">
-                                    {{ __('Add') }}
+                            <div class="d-flex justify-content-end mt-3 border">
+                                <button type="submit" class="btn btn-primary w-100 shadow-sm">
+                                    <i class="fa-solid fa-plus"></i> {{ __('Add') }}
                                 </button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                     @if ($all_ingredients->isNotEmpty())
                         <div class="rounded overflow-hidden">
                             <table class="table align-middle mb-2">
                                 <thead class="table-secondary">
                                     <tr>
-                                        <th class="col-5">{{ __('Ingredient') }}</th>
-                                        <th class="col-3">{{ __('Use by') }}</th>
-                                        <th class="col-2">{{ __('Count') }}</th>
-                                        <th class="col-2">{{ __('Actions') }}</th>
+                                        <th class="col-5 text-center">{{ __('Ingredient') }}</th>
+                                        <th class="col-5 text-center">{{ __('Use by') }}</th>
+                                        <th class="col-1 text-center">{{ __('Count') }}</th>
+                                        <th class="col-1 text-center">{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,9 +74,9 @@
                                         @endphp
                                         <tr class="border-bottom">
                                             {{-- Ingredient --}}
-                                            <td>{{ $ingredient->name }}</td>
+                                            <td class="text-center">{{ $ingredient->name }}</td>
                                             {{-- Expiry date --}}
-                                            <td>
+                                            <td class="text-center">
                                                 @if ($ingredient->expiry_date)
                                                     @if ($daysDiff < 0)
                                                         <span class="text-danger fw-bold" title="Expired!">
@@ -95,7 +96,7 @@
                                                 @endif  
                                             </td>
                                             {{-- Quantity --}}
-                                            <td>{{ $ingredient->quantity }}</td>
+                                            <td class="text-center">{{ $ingredient->quantity }}</td>
                                             {{-- Action Buttons Edit/Delete --}}
                                             <td>
                                                 <div class="d-flex">

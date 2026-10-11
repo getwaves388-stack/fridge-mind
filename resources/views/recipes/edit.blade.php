@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             
-            <h1 class="mb-4">{{ __('Edit the recipe') }}</h1>
+            <h1 class="mb-4"><i class="fa-solid fa-pen-to-square"></i> {{ __('Edit the recipe') }}</h1>
             
             <form action="{{ route('recipe.update',$recipe->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -74,7 +74,7 @@
                     @enderror
                 </div>
                 <div class="d-flex justify-content-end mt-4">
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-success shadow-sm">
                         {{ __('Save Recipe') }}
                     </button>
                 </div>

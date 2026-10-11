@@ -103,7 +103,7 @@ class IngredientController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            'quantity' => 'nullable|string|max:50'
+            'quantity' => 'required|integer|min:1|max:100'
         ]);
 
         $this->ingredient->user_id = Auth::user()->id;
@@ -123,7 +123,7 @@ class IngredientController extends Controller
     public function update(Request $request,$id){
         $request->validate([
             'name' => 'required|string|max:50',
-            'quantity' => 'required|integer|min:1'
+            'quantity' => 'required|integer|min:1|max:100'
         ]);
 
         # Same as: "SELECT * FROM ingredients WHERE id = $id";

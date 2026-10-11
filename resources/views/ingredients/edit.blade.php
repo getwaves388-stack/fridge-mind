@@ -17,33 +17,33 @@
                     <form action="{{ route('ingredient.update', $ingredient->id) }}" method="POST">
                         @csrf
                         @method('PATCh')
-                        <div class="row g-3 align-items-end">
-                            <div class="col-4">
+                        <div class="row gx-1">
+                            <div class="col-5">
                                 <label class="form-label">{{ __('Ingredient') }}</label>
-                                <input type="text" name="name" id="name" class="form-control" value="{{ old('name',$ingredient->name)}}" placeholder="Add ingredient (Required)">
+                                <input type="text" name="name" id="name" class="form-control" value="{{ old('name',$ingredient->name)}}">
                                 @error('name')
                                 <div class="text-danger small">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="col-4">
                                 <label class="form-label">{{ __('Use by') }}</label>
-                                <input type="date" name="expiry_date" id="expiry_date" class="form-control" value="{{ old('expiry_date',$ingredient->expiry_date)}}" placeholder="Expiry date">
+                                <input type="date" name="expiry_date" id="expiry_date" class="form-control" value="{{ old('expiry_date',$ingredient->expiry_date)}}">
                                 @error('expiry_date')
                                 <div class="text-danger small">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-2">
+                            <div class="col-3">
                                 <label class="form-label">{{ __('Count') }}</label>
                                 <input type="number" name="quantity" id="quantity" value="{{ old('quantity',$ingredient->quantity)}}" min="1" class="form-control">
                                 @error('quantity')
                                 <div class="text-danger small">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-2">
-                                <button type="submit" class="btn btn-primary w-100 shadow-sm">
-                                    {{ __('Update') }}
-                                </button>
-                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="submit" class="btn btn-primary w-100 shadow-sm">
+                                <i class="fa-solid fa-check"></i> {{ __('Update') }}
+                            </button>
                         </div>
                     </form>
                 </div>

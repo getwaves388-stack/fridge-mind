@@ -32,7 +32,15 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <i class="fa-solid fa-angles-right"></i>{{ config('app.name') }}
                 </a>
-                <div>{{ __('Hello,') }} {{ Auth::user()->name }}</div>&emsp;
+                @guest
+                    <div>
+                        {{ __('Organize your fridge!') }}
+                    </div>&emsp;        
+                @else
+                    <div>
+                        {{ __('Hello,') }} {{ Auth::user()->name }}
+                    </div>&emsp;
+                @endguest
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -95,7 +103,7 @@
 
                                     <a href="{{ route('recipe.create') }}" class="dropdown-item d-flex align-items-center">
                                         <i class="fa-solid fa-file-circle-plus fa-fw me-2"></i> 
-                                        {{ __('Create a recipe') }}
+                                        {{ __('Add recipe') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

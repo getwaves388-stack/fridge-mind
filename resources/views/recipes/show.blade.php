@@ -33,7 +33,7 @@
                         <div class="col-5">
                             <h5 class="mb-3 fw-bold"><i class="fa-solid fa-list"></i> {{ __('Ingredients') }}</h5>
                             <p class="mb-1"><i class="fa-solid fa-fire text-secondary"></i> {{ __('Total :') }} {{ $recipe->calories }} kcal</p>
-                            <ul>
+                            <ul class="list-unstyled">
                                 @php
                                     // Split ingredients by commas.
                                     $ingredients = preg_split('/[,，、]+/u', $recipe->ingredient_list);
@@ -55,7 +55,7 @@
                                         }
                                     @endphp
                                     <li>
-                                        <span class="fw-bold text-dark">{{ $item }}</span> : 
+                                        <span class="fw-bold text-dark px-1 d-inline-block mb-1 border rounded">{{ $item }}</span> : 
                                         <!-- Display the numerical value if available; otherwise, display "- kcal". -->
                                         <span class="{{ $foundCalorie ? 'text-primary' : 'text-secondary' }}">
                                             {{ $foundCalorie ?? '- kcal' }}
@@ -77,7 +77,7 @@
 
                     <div class="d-flex gap-2 justify-content-end">
                         <div class="mt-2 text-end">
-                            <a href="{{ route('recipe.edit', $recipe->id) }}" class="btn btn-secondary btn-sm">
+                            <a href="{{ route('recipe.edit', $recipe->id) }}" class="btn btn-secondary btn-sm shadow-sm">
                                 <i class="fa-solid fa-pen-to-square"></i> {{ __('Edit') }}
                             </a>
                         </div>
@@ -89,7 +89,7 @@
                             </form>
                         </div> --}}
                         <div class="mt-2 text-end">
-                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete-recipe-{{ $recipe->id }}" title="Delete">
+                            <button class="btn btn-danger btn-sm shadow-sm" data-bs-toggle="modal" data-bs-target="#delete-recipe-{{ $recipe->id }}" title="Delete">
                             <i class="fa-solid fa-trash-can"></i> {{ __('Delete') }}
                             </button>
                         </div>
