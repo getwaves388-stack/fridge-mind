@@ -20,7 +20,7 @@ class LanguageMiddleware
     {
         // If a language is stored in the session, apply it; otherwise, use the default language (e.g., English).
         if (Session::has('applocale')) {
-            App::setLocale(Session::get('applocale'));
+            App::setLocale(Session::get('applocale',config('app.locale')));
         }
 
         return $next($request);

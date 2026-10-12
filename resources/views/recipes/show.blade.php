@@ -13,14 +13,12 @@
         <div class="col-md-8">
             <div class="card shadow mt-4">
                 <div class="card-body">
-                    <div class="row mb-4">
-                        <h3 class="col-8 m-0 text-dark">{{ $recipe->title }}</h3>
-                        
-                        <div class="col-4 ms-auto mt-auto text-end">
-                            {{ __('Record Date:') }} {{ \Carbon\Carbon::parse($recipe->created_at)->format('Y/m/d') }}
-                        </div>
+                    <div class="text-end text-dark">
+                        <span class="bg-dark text-white px-1 d-inline-block mb-1 rounded me-1">{{ __('Record Date') }}</span> {{ \Carbon\Carbon::parse($recipe->created_at)->format('Y/m/d') }}
                     </div>
                     
+                    <h2 class="text-dark mb-3">{{ $recipe->title }}</h2>
+                        
                     <div class="bg-light border rounded text-center overflow-hidden" style="max-height: 500px;">
                         @if($recipe->image)
                         <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->image }}" class="w-100">
@@ -31,8 +29,8 @@
 
                     <div class="row mt-4">
                         <div class="col-5">
-                            <h5 class="mb-3 fw-bold"><i class="fa-solid fa-list"></i> {{ __('Ingredients') }}</h5>
-                            <p class="mb-1"><i class="fa-solid fa-fire text-secondary"></i> {{ __('Total :') }} {{ $recipe->calories }} kcal</p>
+                            <h5 class="mb-2 fw-bold"><i class="fa-solid fa-list"></i> {{ __('Ingredients') }}</h5>
+                            <p class="mb-1"><i class="fa-solid fa-fire text-secondary"></i> {{ __('Total') }} {{ $recipe->calories }} kcal</p>
                             <ul class="list-unstyled">
                                 @php
                                     // Split ingredients by commas.
@@ -55,7 +53,7 @@
                                         }
                                     @endphp
                                     <li>
-                                        <span class="fw-bold text-dark px-1 d-inline-block mb-1 border rounded">{{ $item }}</span><span> : </span>
+                                        <span class="bg-secondary text-white px-1 d-inline-block mb-1 rounded me-1">{{ $item }}</span>
                                         <!-- Display the numerical value if available; otherwise, display "- kcal". -->
                                         <span class="{{ $foundCalorie ? 'text-primary' : 'text-secondary' }}">
                                             {{ $foundCalorie ?? '- kcal' }}
@@ -66,7 +64,7 @@
                         </div>
 
                         <div class="col-7">
-                            <h5 class="mb-3 fw-bold"><i class="fa-solid fa-bookmark"></i> {{ __('Cooking Note') }}</h5>
+                            <h5 class="mb-2 fw-bold"><i class="fa-solid fa-bookmark"></i> {{ __('Cooking Note') }}</h5>
                             @if($recipe->description)
                                 <p class="mb-0" style="white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word;">{{ $recipe->description }}</p>
                             @else

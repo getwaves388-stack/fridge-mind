@@ -154,7 +154,7 @@
                             </div>
                         @else
                             <div class="card-header bg-danger-subtle border border-2 border-danger text-danger p-2">
-                                <p class="fw-bold mb-1"><i class="fa-solid fa-triangle-exclamation"></i> {{ __('Missing Ingredients:') }}</p>
+                                <p class="fw-bold mb-1"><i class="fa-solid fa-triangle-exclamation"></i> {{ __('Missing Ingredients') }}</p>
                                 <div class="gap-1">
                                     @foreach($missing as $missingItem)
                                         <span class="fw-bold px-2 py-1 d-inline-block my-1 rounded border border-danger-subtle">x {{ $missingItem }}</span>

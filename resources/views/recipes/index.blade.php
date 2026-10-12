@@ -28,6 +28,10 @@
                         </div>
                         <div class="col-8">
                             <div class="card-body">
+
+                                <div class="text-muted">
+                                    {{ \Carbon\Carbon::parse($recipe->created_at)->format('Y/m/d') }}
+                                </div>
                                 
                                 <div class="row mb-2">
                                     <a href="{{ route('recipe.show',$recipe->id)}}" class="m-0 h3 text-decoration-none text-dark"><i class="fa-solid fa-angles-right"></i> {{ $recipe->title }}</a>
@@ -46,9 +50,6 @@
                                     @endforeach
                                 </div>
                                 
-                                <div class="text-end">
-                                    {{ __('Record Date:') }} {{ \Carbon\Carbon::parse($recipe->created_at)->format('Y/m/d') }}
-                                </div>
                             </div>
                         </div>
                     </div>
