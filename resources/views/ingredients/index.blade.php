@@ -6,7 +6,7 @@
 <div class="container p-0">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow-sm mt-4">
+            <div class="card shadow-sm mt-2">
                 <div class="card-header h3 py-3 text-center bg-dark text-info"><i class="fa-solid fa-snowflake"></i> {{ __('Your Fridge Food') }} <i class="fa-solid fa-snowflake"></i></div>
 
                 <div class="card-body bg-secondary">
@@ -14,7 +14,7 @@
                         <form action="{{ route('ingredient.store') }}" method="POST">
                             @csrf
                             <div class="row gx-1">
-                                <div class="col-6">
+                                <div class="col-5">
                                     <label class="form-label">{{ __('Ingredient') }}</label>
                                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name')}}" placeholder="{{ __('Add ingredient') }}" autofocus>
                                     @error('name')
@@ -28,7 +28,7 @@
                                     <div class="text-danger small">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <label class="form-label">{{ __('Count') }}</label>
                                     <input type="number" name="quantity" id="quantity" value="{{ old('quantity',1)}}" min="1" class="form-control">
                                     @error('quantity')
@@ -82,11 +82,11 @@
                                                         </span>
                                                     @elseif ($daysDiff <= 2)
                                                         <span class="text-warning fw-bold" style="color: #fd7e14 !important;" title="Expires soon!">
-                                                            <i class="fa-solid fa-clock me-1"></i>{{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
+                                                            {{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
                                                         </span>
                                                     @else
                                                         <span class="text-muted">
-                                                            <i class="fa-solid fa-clock me-1"></i>{{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
+                                                            {{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
                                                         </span>
                                                     @endif
                                                 @else

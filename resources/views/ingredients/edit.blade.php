@@ -18,7 +18,7 @@
                         @csrf
                         @method('PATCh')
                         <div class="row gx-1">
-                            <div class="col-6">
+                            <div class="col-5">
                                 <label class="form-label">{{ __('Ingredient') }}</label>
                                 <input type="text" name="name" id="name" class="form-control" value="{{ old('name',$ingredient->name)}}">
                                 @error('name')
@@ -32,7 +32,7 @@
                                 <div class="text-danger small">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-2">
+                            <div class="col-3">
                                 <label class="form-label">{{ __('Count') }}</label>
                                 <input type="number" name="quantity" id="quantity" value="{{ old('quantity',$ingredient->quantity)}}" min="1" class="form-control">
                                 @error('quantity')
