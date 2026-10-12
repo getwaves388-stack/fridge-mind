@@ -55,7 +55,7 @@
                                         }
                                     @endphp
                                     <li>
-                                        <span class="fw-bold text-dark px-1 d-inline-block mb-1 border rounded">{{ $item }}</span> : 
+                                        <span class="fw-bold text-dark px-1 d-inline-block mb-1 border rounded">{{ $item }}</span><span> : </span>
                                         <!-- Display the numerical value if available; otherwise, display "- kcal". -->
                                         <span class="{{ $foundCalorie ? 'text-primary' : 'text-secondary' }}">
                                             {{ $foundCalorie ?? '- kcal' }}

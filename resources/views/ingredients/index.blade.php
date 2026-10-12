@@ -14,7 +14,7 @@
                         <form action="{{ route('ingredient.store') }}" method="POST">
                             @csrf
                             <div class="row gx-1">
-                                <div class="col-5">
+                                <div class="col-6">
                                     <label class="form-label">{{ __('Ingredient') }}</label>
                                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name')}}" placeholder="{{ __('Add ingredient') }}" autofocus>
                                     @error('name')
@@ -28,7 +28,7 @@
                                     <div class="text-danger small">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <label class="form-label">{{ __('Count') }}</label>
                                     <input type="number" name="quantity" id="quantity" value="{{ old('quantity',1)}}" min="1" class="form-control">
                                     @error('quantity')
@@ -48,8 +48,8 @@
                             <table class="table align-middle mb-2">
                                 <thead class="table-secondary">
                                     <tr>
-                                        <th class="col-5 text-center">{{ __('Ingredient') }}</th>
-                                        <th class="col-5 text-center">{{ __('Use by') }}</th>
+                                        <th class="col-3 text-center">{{ __('Use by') }}</th>
+                                        <th class="col-7 text-center">{{ __('Ingredient') }}</th>
                                         <th class="col-1 text-center">{{ __('Count') }}</th>
                                         <th class="col-1 text-center">{{ __('Actions') }}</th>
                                     </tr>
@@ -73,28 +73,28 @@
                                         
                                         @endphp
                                         <tr class="border-bottom">
-                                            {{-- Ingredient --}}
-                                            <td class="text-center">{{ $ingredient->name }}</td>
                                             {{-- Expiry date --}}
-                                            <td class="text-center">
+                                            <td>
                                                 @if ($ingredient->expiry_date)
                                                     @if ($daysDiff < 0)
                                                         <span class="text-danger fw-bold" title="Expired!">
-                                                            <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ $ingredient->expiry_date }}
+                                                            <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
                                                         </span>
                                                     @elseif ($daysDiff <= 2)
                                                         <span class="text-warning fw-bold" style="color: #fd7e14 !important;" title="Expires soon!">
-                                                            <i class="fa-solid fa-clock me-1"></i>{{ $ingredient->expiry_date }}
+                                                            <i class="fa-solid fa-clock me-1"></i>{{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
                                                         </span>
                                                     @else
                                                         <span class="text-muted">
-                                                            <i class="fa-solid fa-clock me-1"></i>{{ $ingredient->expiry_date }}
+                                                            <i class="fa-solid fa-clock me-1"></i>{{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
                                                         </span>
                                                     @endif
                                                 @else
                                                     <div class="text-muted"><i class="fa-solid fa-minus"></i></div>
                                                 @endif  
                                             </td>
+                                            {{-- Ingredient --}}
+                                            <td>{{ $ingredient->name }}</td>
                                             {{-- Quantity --}}
                                             <td class="text-center">{{ $ingredient->quantity }}</td>
                                             {{-- Action Buttons Edit/Delete --}}

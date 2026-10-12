@@ -103,7 +103,7 @@ class IngredientController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            'quantity' => 'required|integer|min:1|max:100'
+            'quantity' => 'required|integer|min:1|max:1000'
         ]);
 
         $this->ingredient->user_id = Auth::user()->id;

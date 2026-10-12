@@ -22,9 +22,9 @@
             <h2 class="fw-bold mt-5">
                 <span><i class="fa-solid fa-fire text-secondary text-danger"></i> {{ __('Total calorie based on cooking record') }}</span>
             </h2>
-            <div class="row gap-4 my-4 p-1 text-center">
+            <div class="row gap-4 my-4 p-1 text-center d-flex align-items-center">
                 <div class="col bg-white p-3 rounded border border-2 border-primary shadow">
-                    <p class="fs-5 fw-bold">{{ __('Today') }}</p>
+                    <p class="fs-5 fw-bold">{{ __("Today's record") }}</p>
                     <p class="fs-3 text-dark mt-1">{{ $todayCalories }} <span class="text-muted">kcal</span></p>
                 </div>
                 <div class="col bg-white p-3 rounded border border-2 border-warning shadow">
@@ -46,7 +46,7 @@
                 <div class="card-body p-4">
                     <form action="{{ route('profile.store_health') }}" method="POST">
                         @csrf
-                        <div class="row g-3 align-items-end">
+                        <div class="row g-1 align-items-end">
                             <div class="col">
                                 <label class="form-label">{{ __('body weight (kg)') }}</label>
                                 <input type="number" name="weight" step="0.1" value="{{ $todayRecord->weight ?? '' }}" placeholder="{{ __('e.g.') }} 65.5" class="border rounded p-2 form-control" required>
