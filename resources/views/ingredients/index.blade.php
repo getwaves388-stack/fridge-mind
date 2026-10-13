@@ -44,8 +44,8 @@
                         </form>
                     </div>
                     @if ($all_ingredients->isNotEmpty())
-                        <div class="rounded overflow-hidden">
-                            <table class="table table-responsive align-middle mb-2">
+                        <div class="rounded table-responsive overflow-hidden">
+                            <table class="table align-middle mb-2">
                                 <thead class="table-secondary">
                                     <tr>
                                         <th class="col-3 text-center">{{ __('Use by') }}</th>
