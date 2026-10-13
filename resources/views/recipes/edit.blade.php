@@ -58,7 +58,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="ingredient_list" class="form-label">{{ __('Ingredients') }}</label>
-                    <textarea name="ingredient_list" id="ingredient_list" rows="1" class="form-control">{{ old('ingredient_list',$recipe->ingredient_list) }}</textarea>
+                    <textarea name="ingredient_list" id="ingredient_list" rows="1" class="form-control" style="field-sizing:content;">{{ old('ingredient_list',$recipe->ingredient_list) }}</textarea>
                     <div class="form-text text-muted" id="ingredient_list-info">
                         {{ __('Please enter the ingredients, separating each one with (,) or (、).') }}
                     </div>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">{{ __('Note') }}</label>
-                    <textarea name="description" id="description" rows="5" class="form-control">{{ old('description',$recipe->description) }}</textarea>
+                    <textarea name="description" id="description" rows="5" class="form-control" style="field-sizing:content;">{{ old('description',$recipe->description) }}</textarea>
                     @error('description')
                         <div class="text-danger small">{{ $message }}</div>
                     @enderror
