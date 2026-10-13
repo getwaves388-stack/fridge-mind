@@ -45,7 +45,7 @@
                     </div>
                     @if ($all_ingredients->isNotEmpty())
                         <div class="rounded overflow-hidden">
-                            <table class="table align-middle mb-2">
+                            <table class="table table-responsive align-middle mb-2">
                                 <thead class="table-secondary">
                                     <tr>
                                         <th class="col-3 text-center">{{ __('Use by') }}</th>
