@@ -44,75 +44,77 @@
                         </form>
                     </div>
                     @if ($all_ingredients->isNotEmpty())
-                        <div class="rounded table-responsive overflow-hidden">
-                            <table class="table align-middle mb-2">
-                                <thead class="table-secondary">
-                                    <tr>
-                                        <th class="col-3 text-center">{{ __('Use by') }}</th>
-                                        <th class="col-7 text-center">{{ __('Ingredient') }}</th>
-                                        <th class="col-1 text-center">{{ __('Count') }}</th>
-                                        <th class="col-1 text-center">{{ __('Actions') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($all_ingredients as $ingredient)
-                                        @php
-                                            // time zone : Japan (Asia/Tokyo) and convert these into timestamps (in seconds).
-                                            $todayRaw = \Carbon\Carbon::today('Asia/Tokyo')->startOfDay();
-                                            
-                                            $expiryRaw = \Carbon\Carbon::parse($ingredient->expiry_date, 'Asia/Tokyo')->startOfDay();
-
-                                            // Calculate the number of days remaining until the expiry date from today.
-                                            //$secondsDiff = $todayRaw->diffInSeconds($expiryRaw, false);
-
-                                            // A day is 86,400 seconds.
-                                            //$daysDiff = (int) ($secondsDiff / 86400); 
-
-                                            //Calculation of the difference in days
-                                            $daysDiff = (int) $todayRaw->diffInDays($expiryRaw, false);
-                                        
-                                        @endphp
-                                        <tr class="border-bottom">
-                                            {{-- Expiry date --}}
-                                            <td>
-                                                @if ($ingredient->expiry_date)
-                                                    @if ($daysDiff < 0)
-                                                        <span class="text-danger fw-bold" title="Expired!">
-                                                            <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
-                                                        </span>
-                                                    @elseif ($daysDiff <= 2)
-                                                        <span class="text-warning fw-bold" style="color: #fd7e14 !important;" title="Expires soon!">
-                                                            {{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
-                                                        </span>
-                                                    @else
-                                                        <span class="text-muted">
-                                                            {{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
-                                                        </span>
-                                                    @endif
-                                                @else
-                                                    <div class="text-muted"><i class="fa-solid fa-minus"></i></div>
-                                                @endif  
-                                            </td>
-                                            {{-- Ingredient --}}
-                                            <td>{{ $ingredient->name }}</td>
-                                            {{-- Quantity --}}
-                                            <td class="text-center">{{ $ingredient->quantity }}</td>
-                                            {{-- Action Buttons Edit/Delete --}}
-                                            <td>
-                                                <div class="d-flex">
-                                                    <a href="{{ route('ingredient.edit',$ingredient->id)}}" class="btn btn-sm text-secondary" title="Edit"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
-
-                                                    <form action="{{ route('ingredient.destroy',$ingredient->id) }}" method="post" class="ms-1">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" title="Delete" class="btn btn-sm text-danger"><i class="fa-solid fa-trash-can fa-lg"></i></button>
-                                                    </form>
-                                                </div>
-                                            </td>
+                        <div class="rounded overflow-hidden">
+                            <div class="table-responsive">
+                                <table class="table align-middle mb-2">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <th class="col-3 text-center">{{ __('Use by') }}</th>
+                                            <th class="col-7 text-center">{{ __('Ingredient') }}</th>
+                                            <th class="col-1 text-center">{{ __('Count') }}</th>
+                                            <th class="col-1 text-center">{{ __('Actions') }}</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($all_ingredients as $ingredient)
+                                            @php
+                                                // time zone : Japan (Asia/Tokyo) and convert these into timestamps (in seconds).
+                                                $todayRaw = \Carbon\Carbon::today('Asia/Tokyo')->startOfDay();
+                                                
+                                                $expiryRaw = \Carbon\Carbon::parse($ingredient->expiry_date, 'Asia/Tokyo')->startOfDay();
+
+                                                // Calculate the number of days remaining until the expiry date from today.
+                                                //$secondsDiff = $todayRaw->diffInSeconds($expiryRaw, false);
+
+                                                // A day is 86,400 seconds.
+                                                //$daysDiff = (int) ($secondsDiff / 86400); 
+
+                                                //Calculation of the difference in days
+                                                $daysDiff = (int) $todayRaw->diffInDays($expiryRaw, false);
+                                            
+                                            @endphp
+                                            <tr class="border-bottom">
+                                                {{-- Expiry date --}}
+                                                <td>
+                                                    @if ($ingredient->expiry_date)
+                                                        @if ($daysDiff < 0)
+                                                            <span class="text-danger fw-bold" title="Expired!">
+                                                                <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
+                                                            </span>
+                                                        @elseif ($daysDiff <= 2)
+                                                            <span class="text-warning fw-bold" style="color: #fd7e14 !important;" title="Expires soon!">
+                                                                {{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
+                                                            </span>
+                                                        @else
+                                                            <span class="text-muted">
+                                                                {{ \Carbon\Carbon::parse($ingredient->expiry_date)->format('y/m/d') }}
+                                                            </span>
+                                                        @endif
+                                                    @else
+                                                        <div class="text-muted"><i class="fa-solid fa-minus"></i></div>
+                                                    @endif  
+                                                </td>
+                                                {{-- Ingredient --}}
+                                                <td class="text-break">{{ $ingredient->name }}</td>
+                                                {{-- Quantity --}}
+                                                <td class="text-center">{{ $ingredient->quantity }}</td>
+                                                {{-- Action Buttons Edit/Delete --}}
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex">
+                                                        <a href="{{ route('ingredient.edit',$ingredient->id)}}" class="btn btn-sm text-secondary" title="Edit"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
+
+                                                        <form action="{{ route('ingredient.destroy',$ingredient->id) }}" method="post" class="ms-1">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" title="Delete" class="btn btn-sm text-danger"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     @else
                         <div class="py-2 text-center text-muted">
