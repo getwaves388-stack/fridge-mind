@@ -170,10 +170,12 @@
                             @endif
                         </div>
                         <div class="card-body border border-2 border-warning">
-                            <div class="row mb-3">
-                                <a href="{{ route('recipe.show',$recipe->id)}}" class="col-auto m-0 h3 text-decoration-none text-dark"><i class="fa-solid fa-angles-right"></i> {{ $recipe->title }}</a>
-                                <p class="col m-0 d-flex align-items-end"><span class="me-1"><i class="fa-solid fa-fire text-secondary"></span></i>{{ $recipe->calories }} kcal</p>
-                                <div class="col-auto d-flex align-items-end">
+                            <div class="mb-2">
+                                <a href="{{ route('recipe.show',$recipe->id)}}" class="m-0 h3 text-decoration-none text-dark mb-3"><i class="fa-solid fa-angles-right"></i> {{ $recipe->title }}</a>
+                            </div>
+                            <div class="row">
+                                <p class="col"><span class="me-1"><i class="fa-solid fa-fire text-secondary"></span></i>{{ $recipe->calories }} kcal</p>
+                                <div class="col-auto">
                                     {{ $matchRate }}% Match
                                 </div>
                             </div>

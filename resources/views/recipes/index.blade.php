@@ -33,11 +33,13 @@
                                     {{ \Carbon\Carbon::parse($recipe->created_at)->format('Y/m/d') }}
                                 </div>
                                 
-                                <div class="row mb-2">
+                                <div class="mb-2">
                                     <a href="{{ route('recipe.show',$recipe->id)}}" class="m-0 h3 text-decoration-none text-dark"><i class="fa-solid fa-angles-right"></i> {{ $recipe->title }}</a>
                                 </div>
 
-                                <p><i class="fa-solid fa-fire text-secondary"></i> {{ $recipe->calories }} kcal</p>
+                                <div>
+                                    <p><i class="fa-solid fa-fire text-secondary"></i> {{ $recipe->calories }} kcal</p>
+                                </div>
 
                                 <div class="gap-1">
                                     @php
