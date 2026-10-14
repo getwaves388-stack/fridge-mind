@@ -19,7 +19,7 @@
                 @method('PATCH')
                 <div class="mb-3">
                     <label for="title" class="form-label">{{ __('Recipe Name') }}</label>
-                    <input type="text" name="title" class="form-control" value="{{ old('title',$recipe->title) }}">
+                    <textarea type="text" name="title" class="form-control" rows="1" style="field-sizing:content;">{{ old('title',$recipe->title) }}</textarea>
                     @error('title')
                         <div class="text-danger small">{{ $message }}</div>
                     @enderror
